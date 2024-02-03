@@ -1,0 +1,30 @@
+<%- include("sub/header.ejs") %>
+  <div class="container">
+    <img src="images/me.jpg" alt="" class="img">
+    <h1>My Blog</h1>
+    
+    <br>
+    <a id="newPostBtn" href="/new">New Post</a>
+    <ul id="postsList">
+      <% posts.forEach(post=> { %>
+        <li>
+          <h2>
+            <br>
+            <%=post.title%>
+          </h2>
+          <small>
+            <%=post.date %>
+          </small>
+          <p>
+            <%=post.content%>
+          </p>
+          <br>
+          <small>By: <%=post.author%> </small>
+          <a class="edit" href="/edit/<%= post.id %>">Edit</a>
+          <a class="delete" href="/api/posts/delete/<%= post.id %>">Delete</a>
+        </li>
+        <% }); %>
+    </ul>
+  </div>
+
+  <%- include("sub/footer.ejs") %>
